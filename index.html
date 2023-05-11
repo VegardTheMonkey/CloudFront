@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Contacts</title>
+    <title>API cache - Frontend</title>
 </head>
 <body>
-    <h1>Upload</h1>
+    <h1>Upload Here</h1>
     <form id="upload-form">
         <label for="file">Select a file:</label>
-        <input type="file" id="file" name="file"><br><br>
-        <input type="button" value="Upload" onclick="uploadFile()">
+        <input id="fileInp" type="file" id="file" name="file"><br><br>
+        <input class="button" type="button" value="Upload" onclick="uploadFile()">
     </form>
     <h1>Contacts</h1>
     <div class="getall">
-        <button onclick="getContacts()">Show Contacts</button>
-        <button onclick="getContactsVcard()">Show Vcards</button>
+        <button class="button" onclick="getContacts()">Show Contacts</button>
+        <button class="button" onclick="getContactsVcard()">Show Vcards</button>
         <ul id="contacts-list"></ul>
     </div>
     <form id="email-form">
         <label for="email">Search Email</label>
-        <input type="text" id="email-input">
-        <input type="submit">
+        <input id="search" type="text" id="email-input">
+        <input class="button" type="submit">
     </form>
     <div id="email-output"></div>
     
@@ -61,7 +61,7 @@
               contactsList.innerHTML = '';
               currentData = null;
             } else {
-              fetch('http://localhost:6438/contacts')
+              fetch('http://localhost:5555/proxy/cacheJson')
                 .then(response => response.json())
                 .then(data => {
                   // Clear the existing content in #contacts-list
@@ -94,7 +94,7 @@
             contactsList.innerHTML = '';
             currentData = null;
           } else {
-            fetch('http://localhost:6438/contacts/vcard')
+            fetch('http://localhost:5555/proxy/cacheVcard')
               .then(response => response.json())
               .then(data => {
                 // Clear the existing content in #contacts-list
@@ -144,8 +144,84 @@
               });
             });
           });
-          
-         
         </script>
+
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #14365d;
+      color: #fff;
+  }
+
+  h1 {
+      margin-top: 100px;
+      margin-bottom: 20px;
+      color: #fff;
+  }
+
+  form {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .button {
+      padding: 10px 20px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      background-color: #b999be;
+      border: none;
+      border-radius: 20px;
+      transition: 0.3s;
+      }
+
+      .button:hover {
+     
+      background-color: #14365d;
+      color: white;
+     
+      }     
+
+  ul {
+    
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+  }
+
+  li {
+      margin-bottom: 10px;
+  }
+
+  label {
+      font-weight: bold;
+      margin-bottom: 5px;
+  }
+
+  #email-output {
+      margin-top: 20px;
+      font-weight: bold;
+  }
+
+  #email-form{
+    margin-top: 100px;
+  }
+
+  .getall {
+    text-align: center;
+  }
+
+  #search, #fileInp{
+    margin: 15px 0;
+  }
+</style>
 </body>
 </html>
