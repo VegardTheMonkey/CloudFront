@@ -59,6 +59,16 @@
 
 
         function uploadFile() {
+          const password = prompt('Enter Password:');
+  if (!password) {
+    return; // User canceled, do not proceed with the upload
+  }
+  
+  // Check if the password is correct
+  if (password !== 'upload') {
+    alert('Invalid password');
+    return; // Do not proceed with the upload
+  }
             var form = document.getElementById('upload-form');
             var formData = new FormData(form);
         
