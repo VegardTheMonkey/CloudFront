@@ -38,7 +38,7 @@ function uploadFile() {
     }
     var form = document.getElementById('upload-form');
     var formData = new FormData(form);
-    fetch(url + '/upload', {
+    fetch('https://github.com/hgrotli/backendMain/upload', {
             method: 'POST',
             body: formData
         })
