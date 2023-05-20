@@ -1,4 +1,6 @@
 
+let url = "https://github.com/hgrotli/backendMain"
+
 $(document).ready(function() {
     // handle the API key submission
     $('#submit-api-key').click(function(event) {
@@ -36,7 +38,7 @@ function uploadFile() {
     }
     var form = document.getElementById('upload-form');
     var formData = new FormData(form);
-    fetch('http://localhost:6438/upload', {
+    fetch(url + '/upload', {
             method: 'POST',
             body: formData
         })
