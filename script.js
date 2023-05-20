@@ -1,5 +1,5 @@
 
-let url = "https://github.com/hgrotli/backendMain"
+
 
 $(document).ready(function() {
     // handle the API key submission
@@ -38,7 +38,7 @@ function uploadFile() {
     }
     var form = document.getElementById('upload-form');
     var formData = new FormData(form);
-    fetch('https://github.com/hgrotli/backendMain/upload', {
+    fetch('https://flask-production-eba1.up.railway.app//upload', {
             method: 'POST',
             body: formData
         })
