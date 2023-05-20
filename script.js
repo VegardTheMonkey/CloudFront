@@ -1,6 +1,5 @@
 
 
-
 $(document).ready(function() {
     // handle the API key submission
     $('#submit-api-key').click(function(event) {
@@ -38,18 +37,18 @@ function uploadFile() {
     }
     var form = document.getElementById('upload-form');
     var formData = new FormData(form);
-    fetch('https://flask-production-eba1.up.railway.app//upload', {
+    fetch('https://flask-production-eba1.up.railway.app/upload', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            alert('Upload successful');
+            alert('Upload successful!');
         })
         .catch(error => {
             console.error(error);
-            alert('Upload failed');
+            alert('Upload failed!!');
         });
 }
 
@@ -63,7 +62,7 @@ function getContacts() {
         currentData = null;
     } else {
         const password = prompt('Enter API Key');
-        fetch('http://localhost:5555/proxy/cacheJson', {
+        fetch('https://asi2-cache2.onrender.com/proxy/cacheJson', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -107,7 +106,7 @@ function getContactsVcard() {
             // User clicked Cancel, do nothing
             return;
         }
-        fetch('http://localhost:5555/proxy/cacheVcard', {
+        fetch('https://asi2-cache2.onrender.com/proxy/cacheVcard', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
