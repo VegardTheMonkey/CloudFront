@@ -143,7 +143,7 @@ $(document).ready(function() {
         var email = $('#email-input').val();
 
         // make a GET request to the API endpoint with the entered email
-        $.get("http://localhost:6438/contacts/" + email, function(data) {
+        $.get("https://flask-production-eba1.up.railway.app/contacts/" + email, function(data) {
                 // format the JSON data with line breaks and display the result in the #email-output div
                 var contact = data;
                 var p = document.createElement('p');
